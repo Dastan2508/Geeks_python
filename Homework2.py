@@ -18,7 +18,7 @@ class Figure:
 class Square(Figure):
     def __init__(self, side_length):
         super().__init__()
-        self.__side_length = side_length  # Приватный атрибут
+        self.__side_length = side_length
 
     def calculate_area(self):
         return self.__side_length ** 2
