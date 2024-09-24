@@ -15,6 +15,13 @@ def create_db():
     conn.commit()
     conn.close()
 
+def clear_table():
+    conn = sqlite3.connect('hw.db')
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM products')
+    conn.commit()
+    conn.close()
+
 def add_products():
     conn = sqlite3.connect('hw.db')
     cursor = conn.cursor()
@@ -107,6 +114,7 @@ def search_products_by_title(keyword):
 
 def test_functions():
     create_db()
+    clear_table()  # Очищаем таблицу перед добавлением данных
     add_products()
     print("Все товары после добавления:")
     get_all_products()
