@@ -3,7 +3,6 @@ import sqlite3
 conn = sqlite3.connect('my_database.db')
 cursor = conn.cursor()
 
-# Create tables
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS categories (
     code TEXT PRIMARY KEY,
@@ -31,7 +30,6 @@ CREATE TABLE IF NOT EXISTS products (
 )
 ''')
 
-# Insert categories, ensuring no duplicates
 categories_to_insert = [
     ('FD', 'Food products'),
     ('EL', 'Electronics'),
@@ -44,7 +42,6 @@ for code, title in categories_to_insert:
     except sqlite3.IntegrityError:
         print(f"Category with code '{code}' already exists. Skipping insert.")
 
-# Insert stores
 stores_to_insert = [
     (1, 'Grocery Store'),
     (2, 'Electronics Hub'),
@@ -57,7 +54,6 @@ for store_id, title in stores_to_insert:
     except sqlite3.IntegrityError:
         print(f"Store with ID '{store_id}' already exists. Skipping insert.")
 
-# Insert products
 products_to_insert = [
     (1, 'Bread', 'FD', 1.5, 50, 1),
     (2, 'Smartphone', 'EL', 700.0, 15, 2),
